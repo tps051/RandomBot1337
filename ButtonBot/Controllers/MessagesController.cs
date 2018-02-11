@@ -15,6 +15,7 @@ namespace ButtonBot
         private const string HeroCard = "Hero card";
         private const string ThumbnailCard = "Thumbnail card";
         private const string ReceiptCard = "Receipt card";
+        private const string PicRandom = "Pic Random";
         private const string SigninCard = "Sign-in card";
         private const string AnimationCard = "Animation card";
         private const string VideoCard = "Video card";

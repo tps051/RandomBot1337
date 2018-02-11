@@ -17,8 +17,9 @@ namespace ButtonBot.Dialogs
         private const string AnimationCard = "Animation card";
         private const string VideoCard = "Video card";
         private const string AudioCard = "Audio card";
+        private const string PicrandomCard = "Pic random";
 
-        private IEnumerable<string> options = new List<string> { HeroCard, ThumbnailCard, ReceiptCard, SigninCard, AnimationCard, VideoCard, AudioCard };
+        private IEnumerable<string> options = new List<string> { HeroCard, ThumbnailCard, PicrandomCard, ReceiptCard, SigninCard, AnimationCard, VideoCard, AudioCard };
 
         public async Task StartAsync(IDialogContext context)
         {
@@ -37,6 +38,13 @@ namespace ButtonBot.Dialogs
                         Value = HeroCard,
                         Text = HeroCard,
                         Title = HeroCard,
+                        Type = ActionTypes.ImBack
+                    },
+                     new CardAction
+                    {
+                        Value = PicrandomCard,
+                        Text = PicrandomCard,
+                        Title = PicrandomCard,
                         Type = ActionTypes.ImBack
                     },
                     new CardAction
@@ -101,6 +109,8 @@ namespace ButtonBot.Dialogs
 
             switch (select)
             {
+                case PicrandomCard:
+                    return GetPicrandomCard();
                 case HeroCard:
                     return GetHeroCard();
                 case ThumbnailCard:
@@ -146,6 +156,32 @@ namespace ButtonBot.Dialogs
             return heroCard.ToAttachment();
         }
 
+         private static Attachment GetPicrandomCard()
+          {
+               HeroCard heroCard = new HeroCard
+              {
+                  Title = "PicRandom",
+                  Subtitle = "PicRandom",
+                  Text = "Got this!",
+                  Images = new List<CardImage>
+                  {
+                      new CardImage("https://pp.userapi.com/c824604/v824604748/b427d/xAN4FY0_irw.jpg")
+                  },
+                  Buttons = new List<CardAction>
+                  {   
+                      new CardAction
+                      {
+                          Value = PicrandomCard,
+                          Text = PicrandomCard,
+                          Title = PicrandomCard,
+                          Type = ActionTypes.ImBack
+                      }
+                  }
+              };
+
+              return heroCard.ToAttachment();
+          }
+          
         private static Attachment GetThumbnailCard()
         {
             HeroCard heroCard = new HeroCard
@@ -154,14 +190,15 @@ namespace ButtonBot.Dialogs
                 Subtitle = "Good sample",
                 Text = "Very good text",
                 Images = new List<CardImage> { new CardImage("https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/68dd54ca-60cf-4ef7-898b-26d7cbe48ec7/10-dithering-opt.jpg") },
-                Buttons = new List<CardAction> { new CardAction
-                {
-                    Value = ReceiptCard,
-                    Text = ReceiptCard,
-                    Title = ReceiptCard,
-                    Type = ActionTypes.ImBack
-                }
-                }
+                Buttons = new List<CardAction>
+                    { new CardAction
+                        {
+                            Value = ReceiptCard,
+                            Text = ReceiptCard,
+                            Title = ReceiptCard,
+                            Type = ActionTypes.ImBack
+                        }
+                    }
             };
 
             return heroCard.ToAttachment();
