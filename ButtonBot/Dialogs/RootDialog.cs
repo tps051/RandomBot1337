@@ -157,32 +157,57 @@ namespace ButtonBot.Dialogs
 
             return heroCard.ToAttachment();
         }
-        private List<string> lst = new List<string>
-        {
-            "https://pp.userapi.com/c629208/v629208845/19f01/wCdlYtgfKmo.jpg",
-            "https://pp.userapi.com/c621509/v621509748/644ec/nDTD4133wlU.jpg",
-            "https://pp.userapi.com/c638026/v638026508/32185/8_XieE2Fqbc.jpg",
-            "https://pp.userapi.com/c543101/v543101662/329d4/6OKPYwKDnRY.jpg",
-            "https://pp.userapi.com/c840422/v840422860/43037/huEyNJoHCqU.jpg",
-            "https://pp.userapi.com/c636324/v636324164/456e5/fhKIaVtEL7Q.jpg",
-            "https://pp.userapi.com/c841435/v841435457/6449f/R0VLvLeyQns.jpg",
-            "https://pp.userapi.com/c7006/v7006362/2ccaa/nkRR12uBev0.jpg",
-            "https://pp.userapi.com/c543106/v543106219/3a795/E_WU0hvJTAw.jpg",
-            "https://pp.userapi.com/c841430/v841430316/6b294/dR1rF0Ix64s.jpg",
-            "https://pp.userapi.com/c840431/v840431351/525a7/i8voIb-TygQ.jpg",
-            "https://pp.userapi.com/c834201/v834201258/b0ace/Dhuw6DOmFgc.jpg"
-        };
-        
-         private static Attachment GetPicrandomCard()
+        /*  private List<string> lst = new List<string>
           {
-               HeroCard heroCard = new HeroCard
-              {
-                  Title = "",
-                  Subtitle = "",
-                  Text = "",
-                  Images = new List<CardImage>
+              "https://pp.userapi.com/c629208/v629208845/19f01/wCdlYtgfKmo.jpg",
+              "https://pp.userapi.com/c621509/v621509748/644ec/nDTD4133wlU.jpg",
+              "https://pp.userapi.com/c638026/v638026508/32185/8_XieE2Fqbc.jpg",
+              "https://pp.userapi.com/c543101/v543101662/329d4/6OKPYwKDnRY.jpg",
+              "https://pp.userapi.com/c840422/v840422860/43037/huEyNJoHCqU.jpg",
+              "https://pp.userapi.com/c636324/v636324164/456e5/fhKIaVtEL7Q.jpg",
+              "https://pp.userapi.com/c841435/v841435457/6449f/R0VLvLeyQns.jpg",
+              "https://pp.userapi.com/c7006/v7006362/2ccaa/nkRR12uBev0.jpg",
+              "https://pp.userapi.com/c543106/v543106219/3a795/E_WU0hvJTAw.jpg",
+              "https://pp.userapi.com/c841430/v841430316/6b294/dR1rF0Ix64s.jpg",
+              "https://pp.userapi.com/c840431/v840431351/525a7/i8voIb-TygQ.jpg",
+              "https://pp.userapi.com/c834201/v834201258/b0ace/Dhuw6DOmFgc.jpg"
+          };
+          */
+
+            public static string Ran()
+            {
+                string[] urls =
+                {
+                    "https://pp.userapi.com/c629208/v629208845/19f01/wCdlYtgfKmo.jpg",
+                    "https://pp.userapi.com/c621509/v621509748/644ec/nDTD4133wlU.jpg",
+                    "https://pp.userapi.com/c638026/v638026508/32185/8_XieE2Fqbc.jpg",
+                    "https://pp.userapi.com/c543101/v543101662/329d4/6OKPYwKDnRY.jpg",
+                    "https://pp.userapi.com/c840422/v840422860/43037/huEyNJoHCqU.jpg",
+                    "https://pp.userapi.com/c636324/v636324164/456e5/fhKIaVtEL7Q.jpg",
+                    "https://pp.userapi.com/c841435/v841435457/6449f/R0VLvLeyQns.jpg",
+                    "https://pp.userapi.com/c7006/v7006362/2ccaa/nkRR12uBev0.jpg",
+                    "https://pp.userapi.com/c543106/v543106219/3a795/E_WU0hvJTAw.jpg",
+                    "https://pp.userapi.com/c841430/v841430316/6b294/dR1rF0Ix64s.jpg",
+                    "https://pp.userapi.com/c840431/v840431351/525a7/i8voIb-TygQ.jpg",
+                    "https://pp.userapi.com/c834201/v834201258/b0ace/Dhuw6DOmFgc.jpg"
+                };
+                Random rnd = new Random();
+                int index = rnd.Next(urls.Length);
+            return urls[index];
+        }
+
+        
+           private static Attachment GetPicrandomCard()
+          {
+            HeroCard heroCard = new HeroCard
+            {
+                Title = "",
+                Subtitle = "",
+                Text = "",
+                Images = new List<CardImage>
                   {
-                      new CardImage("https://pp.userapi.com/c824604/v824604748/b427d/xAN4FY0_irw.jpg")
+                     // new CardImage("https://pp.userapi.com/c824604/v824604748/b427d/xAN4FY0_irw.jpg")
+                      new CardImage(Ran())
                   },
                   Buttons = new List<CardAction>
                   {   
