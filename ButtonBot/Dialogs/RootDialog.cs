@@ -12,15 +12,13 @@ namespace ButtonBot.Dialogs
     public class RootDialog : IDialog<object>
     {
         private const string HeroCard = "Hero card";
-        private const string ThumbnailCard = "Thumbnail card";
-        private const string ReceiptCard = "Receipt card";
         private const string SigninCard = "Sign-in card";
         private const string AnimationCard = "Animation card";
         private const string VideoCard = "Video card";
         private const string AudioCard = "Audio card";
         private const string PicrandomCard = "Pic random";
         
-        private IEnumerable<string> options = new List<string> { HeroCard, ThumbnailCard, PicrandomCard, ReceiptCard, SigninCard, AnimationCard, VideoCard, AudioCard };
+        private IEnumerable<string> options = new List<string> { HeroCard, PicrandomCard, SigninCard, AnimationCard, VideoCard, AudioCard };
 
         public async Task StartAsync(IDialogContext context)
         {
@@ -47,20 +45,6 @@ namespace ButtonBot.Dialogs
                         Value = PicrandomCard,
                         Text = PicrandomCard,
                         Title = PicrandomCard,
-                        Type = ActionTypes.ImBack
-                    },
-                    new CardAction
-                    {
-                        Value = ThumbnailCard,
-                        Text = ThumbnailCard,
-                        Title = ThumbnailCard,
-                        Type = ActionTypes.ImBack
-                    },
-                    new CardAction
-                    {
-                        Value = ReceiptCard,
-                        Text = ReceiptCard,
-                        Title = ReceiptCard,
                         Type = ActionTypes.ImBack
                     },
                     new CardAction
@@ -115,10 +99,6 @@ namespace ButtonBot.Dialogs
                     return GetPicrandomCard();
                 case HeroCard:
                     return GetHeroCard();
-                case ThumbnailCard:
-                    return GetThumbnailCard();
-                case ReceiptCard:
-                    return GetReceiptCard();
                 case SigninCard:
                     return GetSigninCard();
                 case AnimationCard:
@@ -137,19 +117,19 @@ namespace ButtonBot.Dialogs
         {
             HeroCard heroCard = new HeroCard
             {
-                Title = "HeroCard Sample",
-                Subtitle = "Good sample",
-                Text = "Very good text",
+                Title = "w31c0m3!",
+                Subtitle = "",
+                Text = "",
                 Images = new List<CardImage>
                 {
-                    new CardImage("https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/68dd54ca-60cf-4ef7-898b-26d7cbe48ec7/10-dithering-opt.jpg")
+                    new CardImage("https://pp.userapi.com/c623900/v623900617/a866b/vFxo15pmCio.jpg")
                 },
                 Buttons = new List<CardAction>
                 {
                     new CardAction{
-                        Value = ThumbnailCard,
-                        Text = ThumbnailCard,
-                        Title = ThumbnailCard,
+                        Value = PicrandomCard,
+                        Text = PicrandomCard,
+                        Title = PicrandomCard,
                         Type = ActionTypes.ImBack
                     }
                 }
@@ -157,23 +137,6 @@ namespace ButtonBot.Dialogs
 
             return heroCard.ToAttachment();
         }
-        /*  private List<string> lst = new List<string>
-          {
-              "https://pp.userapi.com/c629208/v629208845/19f01/wCdlYtgfKmo.jpg",
-              "https://pp.userapi.com/c621509/v621509748/644ec/nDTD4133wlU.jpg",
-              "https://pp.userapi.com/c638026/v638026508/32185/8_XieE2Fqbc.jpg",
-              "https://pp.userapi.com/c543101/v543101662/329d4/6OKPYwKDnRY.jpg",
-              "https://pp.userapi.com/c840422/v840422860/43037/huEyNJoHCqU.jpg",
-              "https://pp.userapi.com/c636324/v636324164/456e5/fhKIaVtEL7Q.jpg",
-              "https://pp.userapi.com/c841435/v841435457/6449f/R0VLvLeyQns.jpg",
-              "https://pp.userapi.com/c7006/v7006362/2ccaa/nkRR12uBev0.jpg",
-              "https://pp.userapi.com/c543106/v543106219/3a795/E_WU0hvJTAw.jpg",
-              "https://pp.userapi.com/c841430/v841430316/6b294/dR1rF0Ix64s.jpg",
-              "https://pp.userapi.com/c840431/v840431351/525a7/i8voIb-TygQ.jpg",
-              "https://pp.userapi.com/c834201/v834201258/b0ace/Dhuw6DOmFgc.jpg"
-          };
-          */
-
             public static string Ran()
             {
                 string[] urls =
@@ -206,7 +169,6 @@ namespace ButtonBot.Dialogs
                 Text = "",
                 Images = new List<CardImage>
                   {
-                     // new CardImage("https://pp.userapi.com/c824604/v824604748/b427d/xAN4FY0_irw.jpg")
                       new CardImage(Ran())
                   },
                   Buttons = new List<CardAction>
@@ -223,67 +185,7 @@ namespace ButtonBot.Dialogs
 
               return heroCard.ToAttachment();
           }
-          
-        private static Attachment GetThumbnailCard()
-        {
-            HeroCard heroCard = new HeroCard
-            {
-                Title = "Thumbnail Sample",
-                Subtitle = "Good sample",
-                Text = "Very good text",
-                Images = new List<CardImage> { new CardImage("https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/68dd54ca-60cf-4ef7-898b-26d7cbe48ec7/10-dithering-opt.jpg") },
-                Buttons = new List<CardAction>
-                    { new CardAction
-                        {
-                            Value = ReceiptCard,
-                            Text = ReceiptCard,
-                            Title = ReceiptCard,
-                            Type = ActionTypes.ImBack
-                        }
-                    }
-            };
-
-            return heroCard.ToAttachment();
-        }
-
-        private static Attachment GetReceiptCard()
-        {
-            ReceiptCard receiptCard = new ReceiptCard
-            {
-                Title = "Pizza",
-                Facts = new List<Fact> {new Fact("dough", "thin"), new Fact("acute", "yes")},
-                Items = new List<ReceiptItem>
-                {
-                    new ReceiptItem("Cheese", quantity: "1", price: "$ 15.00",
-                        image:
-                        new CardImage(
-                            url: "https://cdn.cnn.com/cnnnext/dam/assets/120306151541-flights-cheese-super-169.jpg")),
-                    new ReceiptItem("Meatballs", quantity: "20", price: "$ 20.00",
-                        image:
-                        new CardImage(
-                            url:
-                            "http://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/1/21/0/0156767_greek-meatballs_s4x3.jpg.rend.hgtvcom.616.462.suffix/1371595420875.jpeg")),
-                    new ReceiptItem("Tomatoes", quantity: "3", price: "$ 5.00",
-                        image:
-                        new CardImage(url: "https://www.organicfacts.net/wp-content/uploads/2013/05/Organictomato1.jpg"))
-                },
-                Tax = "$ 3.95",
-                Total = "$ 73.95",
-                Buttons = new List<CardAction>
-                {
-                    new CardAction
-                    {
-                        Value = SigninCard,
-                        Text = SigninCard,
-                        Title = SigninCard,
-                        Type = ActionTypes.ImBack
-                    }
-                }
-            };
-
-            return receiptCard.ToAttachment();
-        }
-
+         
         private static Attachment GetSigninCard()
         {
             SigninCard signinCard = new SigninCard
@@ -337,7 +239,7 @@ namespace ButtonBot.Dialogs
                 Media = new List<MediaUrl>{
                     new MediaUrl()
                     {
-                        Url = "https://2ch.hk/b/src/169827728/15174870919881.mp4"
+                        Url = "https://2ch.pm/b/src/169827728/15174870919881.mp4"
                     }
                 },
                 Buttons = new List<CardAction> { new CardAction
