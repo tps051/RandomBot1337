@@ -12,6 +12,7 @@ namespace ButtonBot
     [BotAuthentication]
     public class MessagesController : ApiController
     {
+        private const string BredStories = "/b/Story";
         private const string HeroCard = "Hero card";
         private const string ThumbnailCard = "Thumbnail card";
         private const string ReceiptCard = "Receipt card";
@@ -21,7 +22,7 @@ namespace ButtonBot
         private const string VideoCard = "Video card";
         private const string AudioCard = "Audio card";
 
-        private IEnumerable<string> options = new List<string> { HeroCard, ThumbnailCard, ReceiptCard, SigninCard, AnimationCard, VideoCard, AudioCard };
+        private IEnumerable<string> options = new List<string> {BredStories, HeroCard, ThumbnailCard, ReceiptCard, SigninCard, AnimationCard, VideoCard, AudioCard };
         /// <summary>
         /// POST: api/Messages
         /// Receive a message from a user and reply to it
