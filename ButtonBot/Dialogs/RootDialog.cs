@@ -14,15 +14,17 @@ namespace ButtonBot.Dialogs
     {
         private const string BredStories = "/b/Story";
         private const string HeroCard = "Hero card";
-        private const string ThumbnailCard = "Thumbnail card";
-        private const string ReceiptCard = "Receipt card";
         private const string SigninCard = "Sign-in card";
         private const string AnimationCard = "Animation card";
         private const string VideoCard = "Video card";
         private const string AudioCard = "Audio card";
         private const string PicrandomCard = "Pic random";
         
+<<<<<<< HEAD
         private IEnumerable<string> options = new List<string> {BredStories, HeroCard, ThumbnailCard, PicrandomCard, SigninCard, AnimationCard, VideoCard, AudioCard };
+=======
+        private IEnumerable<string> options = new List<string> { HeroCard, PicrandomCard, SigninCard, AnimationCard, VideoCard, AudioCard };
+>>>>>>> 2b2b79f8acbf2f244484388a28b4411455e3801b
 
         public async Task StartAsync(IDialogContext context)
         {
@@ -56,20 +58,6 @@ namespace ButtonBot.Dialogs
                         Value = PicrandomCard,
                         Text = PicrandomCard,
                         Title = PicrandomCard,
-                        Type = ActionTypes.ImBack
-                    },
-                    new CardAction
-                    {
-                        Value = ThumbnailCard,
-                        Text = ThumbnailCard,
-                        Title = ThumbnailCard,
-                        Type = ActionTypes.ImBack
-                    },
-                    new CardAction
-                    {
-                        Value = ReceiptCard,
-                        Text = ReceiptCard,
-                        Title = ReceiptCard,
                         Type = ActionTypes.ImBack
                     },
                     new CardAction
@@ -126,8 +114,11 @@ namespace ButtonBot.Dialogs
                     return GetPicrandomCard();
                 case HeroCard:
                     return GetHeroCard();
+<<<<<<< HEAD
                 case ThumbnailCard:
                     return GetThumbnailCard();
+=======
+>>>>>>> 2b2b79f8acbf2f244484388a28b4411455e3801b
                 case SigninCard:
                     return GetSigninCard();
                 case AnimationCard:
@@ -155,19 +146,19 @@ namespace ButtonBot.Dialogs
         {
             HeroCard heroCard = new HeroCard
             {
-                Title = "HeroCard Sample",
-                Subtitle = "Good sample",
-                Text = "Very good text",
+                Title = "Welcome!",
+                Subtitle = "",
+                Text = "",
                 Images = new List<CardImage>
                 {
-                    new CardImage("https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/68dd54ca-60cf-4ef7-898b-26d7cbe48ec7/10-dithering-opt.jpg")
+                    new CardImage("https://pp.userapi.com/c623900/v623900617/a866b/vFxo15pmCio.jpg")
                 },
                 Buttons = new List<CardAction>
                 {
                     new CardAction{
-                        Value = ThumbnailCard,
-                        Text = ThumbnailCard,
-                        Title = ThumbnailCard,
+                        Value = PicrandomCard,
+                        Text = PicrandomCard,
+                        Title = PicrandomCard,
                         Type = ActionTypes.ImBack
                     }
                 }
@@ -242,6 +233,7 @@ namespace ButtonBot.Dialogs
               return heroCard.ToAttachment();
           }
           
+<<<<<<< HEAD
         private static Attachment GetThumbnailCard()
         {
             HeroCard heroCard = new HeroCard
@@ -263,6 +255,48 @@ namespace ButtonBot.Dialogs
 
             return heroCard.ToAttachment();
         }
+=======
+
+      /*  private static Attachment GetReceiptCard()
+        {
+            ReceiptCard receiptCard = new ReceiptCard
+            {
+                Title = "Pizza",
+                Facts = new List<Fact> {new Fact("dough", "thin"), new Fact("acute", "yes")},
+                Items = new List<ReceiptItem>
+                {
+                    new ReceiptItem("Cheese", quantity: "1", price: "$ 15.00",
+                        image:
+                        new CardImage(
+                            url: "https://cdn.cnn.com/cnnnext/dam/assets/120306151541-flights-cheese-super-169.jpg")),
+                    new ReceiptItem("Meatballs", quantity: "20", price: "$ 20.00",
+                        image:
+                        new CardImage(
+                            url:
+                            "http://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/1/21/0/0156767_greek-meatballs_s4x3.jpg.rend.hgtvcom.616.462.suffix/1371595420875.jpeg")),
+                    new ReceiptItem("Tomatoes", quantity: "3", price: "$ 5.00",
+                        image:
+                        new CardImage(url: "https://www.organicfacts.net/wp-content/uploads/2013/05/Organictomato1.jpg"))
+                },
+                Tax = "$ 3.95",
+                Total = "$ 73.95",
+                Buttons = new List<CardAction>
+                {
+                    new CardAction
+                    {
+                        Value = SigninCard,
+                        Text = SigninCard,
+                        Title = SigninCard,
+                        Type = ActionTypes.ImBack
+                    }
+                }
+            };
+            
+
+            return receiptCard.ToAttachment();
+        }
+        */
+>>>>>>> 2b2b79f8acbf2f244484388a28b4411455e3801b
         private static Attachment GetSigninCard()
         {
             SigninCard signinCard = new SigninCard
