@@ -12,15 +12,13 @@ namespace ButtonBot.Dialogs
     public class RootDialog : IDialog<object>
     {
         private const string HeroCard = "Hero card";
-        private const string ThumbnailCard = "Thumbnail card";
-        private const string ReceiptCard = "Receipt card";
         private const string SigninCard = "Sign-in card";
         private const string AnimationCard = "Animation card";
         private const string VideoCard = "Video card";
         private const string AudioCard = "Audio card";
         private const string PicrandomCard = "Pic random";
         
-        private IEnumerable<string> options = new List<string> { HeroCard, ThumbnailCard, PicrandomCard, ReceiptCard, SigninCard, AnimationCard, VideoCard, AudioCard };
+        private IEnumerable<string> options = new List<string> { HeroCard, PicrandomCard, SigninCard, AnimationCard, VideoCard, AudioCard };
 
         public async Task StartAsync(IDialogContext context)
         {
@@ -47,20 +45,6 @@ namespace ButtonBot.Dialogs
                         Value = PicrandomCard,
                         Text = PicrandomCard,
                         Title = PicrandomCard,
-                        Type = ActionTypes.ImBack
-                    },
-                    new CardAction
-                    {
-                        Value = ThumbnailCard,
-                        Text = ThumbnailCard,
-                        Title = ThumbnailCard,
-                        Type = ActionTypes.ImBack
-                    },
-                    new CardAction
-                    {
-                        Value = ReceiptCard,
-                        Text = ReceiptCard,
-                        Title = ReceiptCard,
                         Type = ActionTypes.ImBack
                     },
                     new CardAction
@@ -115,10 +99,6 @@ namespace ButtonBot.Dialogs
                     return GetPicrandomCard();
                 case HeroCard:
                     return GetHeroCard();
-                case ThumbnailCard:
-                    return GetThumbnailCard();
-                case ReceiptCard:
-                    return GetReceiptCard();
                 case SigninCard:
                     return GetSigninCard();
                 case AnimationCard:
@@ -137,19 +117,19 @@ namespace ButtonBot.Dialogs
         {
             HeroCard heroCard = new HeroCard
             {
-                Title = "HeroCard Sample",
-                Subtitle = "Good sample",
-                Text = "Very good text",
+                Title = "Welcome!",
+                Subtitle = "",
+                Text = "",
                 Images = new List<CardImage>
                 {
-                    new CardImage("https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/68dd54ca-60cf-4ef7-898b-26d7cbe48ec7/10-dithering-opt.jpg")
+                    new CardImage("https://pp.userapi.com/c623900/v623900617/a866b/vFxo15pmCio.jpg")
                 },
                 Buttons = new List<CardAction>
                 {
                     new CardAction{
-                        Value = ThumbnailCard,
-                        Text = ThumbnailCard,
-                        Title = ThumbnailCard,
+                        Value = PicrandomCard,
+                        Text = PicrandomCard,
+                        Title = PicrandomCard,
                         Type = ActionTypes.ImBack
                     }
                 }
@@ -224,29 +204,8 @@ namespace ButtonBot.Dialogs
               return heroCard.ToAttachment();
           }
           
-        private static Attachment GetThumbnailCard()
-        {
-            HeroCard heroCard = new HeroCard
-            {
-                Title = "Thumbnail Sample",
-                Subtitle = "Good sample",
-                Text = "Very good text",
-                Images = new List<CardImage> { new CardImage("https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/68dd54ca-60cf-4ef7-898b-26d7cbe48ec7/10-dithering-opt.jpg") },
-                Buttons = new List<CardAction>
-                    { new CardAction
-                        {
-                            Value = ReceiptCard,
-                            Text = ReceiptCard,
-                            Title = ReceiptCard,
-                            Type = ActionTypes.ImBack
-                        }
-                    }
-            };
 
-            return heroCard.ToAttachment();
-        }
-
-        private static Attachment GetReceiptCard()
+      /*  private static Attachment GetReceiptCard()
         {
             ReceiptCard receiptCard = new ReceiptCard
             {
@@ -280,10 +239,11 @@ namespace ButtonBot.Dialogs
                     }
                 }
             };
+            
 
             return receiptCard.ToAttachment();
         }
-
+        */
         private static Attachment GetSigninCard()
         {
             SigninCard signinCard = new SigninCard
