@@ -7,5 +7,7 @@ namespace ButtonBot
 {
     public class Story
     {
+        public string Header { get; set; }
+
     }
 }
