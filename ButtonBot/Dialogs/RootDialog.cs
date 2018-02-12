@@ -5,6 +5,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Scorables;
 using Microsoft.Bot.Connector;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace ButtonBot.Dialogs
 {
@@ -19,6 +20,8 @@ namespace ButtonBot.Dialogs
         private const string VideoCard = "Video card";
         private const string AudioCard = "Audio card";
         private const string PicrandomCard = "Pic random";
+        static string path = Environment.CurrentDirectory + "\\texts.json";
+        StreamReader file = new StreamReader(path);
         
         private IEnumerable<string> options = new List<string> {BredStories, HeroCard, PicrandomCard, SigninCard, AnimationCard, VideoCard, AudioCard };
         public async Task StartAsync(IDialogContext context)
