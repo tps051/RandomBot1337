@@ -20,8 +20,8 @@ namespace ButtonBot.Dialogs
         private const string VideoCard = "Video card";
         private const string AudioCard = "Audio card";
         private const string PicrandomCard = "Pic random";
-        static string path = Environment.CurrentDirectory + "\\texts.json";
-        StreamReader file = new StreamReader(path);
+        //static string path = Environment.CurrentDirectory + "\\texts.json";
+       // StreamReader file = new StreamReader(path);
         
         private IEnumerable<string> options = new List<string> {BredStories, HeroCard, PicrandomCard, SigninCard, AnimationCard, VideoCard, AudioCard };
         public async Task StartAsync(IDialogContext context)
@@ -263,7 +263,7 @@ namespace ButtonBot.Dialogs
                 Media = new List<MediaUrl>{
                     new MediaUrl()
                     {
-                        Url = "https://2ch.pm/b/src/169827728/15174870919881.mp4"
+                        Url = "https://2ch.pm/mu/src/1490623/15183754652182.mp4"
                     }
                 },
                 Buttons = new List<CardAction> { new CardAction
@@ -277,15 +277,26 @@ namespace ButtonBot.Dialogs
             return videoCard.ToAttachment();
         }
 
+        public static string mus()
+        {
+            string[] mus =
+            {
+                    "https://2ch.pm/mu/src/1490623/15183754652733.mp4",
+                    "https://2ch.pm/mu/src/1490623/15183754650640.mp4",
+                    "https://2ch.pm/mu/src/1490623/15183754651551.mp4"
+                };
+            Random rnd = new Random();
+            int index = rnd.Next(mus.Length);
+            return mus[index];
+        }
+
+
         private static Attachment GetAudioCard()
         {
             AudioCard audioCard = new AudioCard
             {
                 Media = new List<MediaUrl>{
-                    new MediaUrl
-                    {
-                        Url = "https://cs9-2v4.userapi.com/p22/2aed7071c17333.mp3?extra=p9q0h0Ay4Xs-6mBts2yW2hgWtKnQGRdt-6tP2BWuyY8SHlCryo36NK94ViA26uReimjLFtXVQo8rJ1QWdFhXlNL3qDo6zGUqXYkhAoLRuJYTZAHL1PdwGcdyymndTauZ_Fn-Lx8zIg#FILENAME/Good Times - %D0%96%D0%B8%D0%B7%D0%BD%D1%8C %D1%85%D0%BE%D1%80%D0%BE%D1%88%D0%B0.mp3"
-                    }
+                    new MediaUrl(mus())
                 }
             };
             return audioCard.ToAttachment();
