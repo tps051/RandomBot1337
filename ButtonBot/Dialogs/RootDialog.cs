@@ -174,7 +174,8 @@ namespace ButtonBot.Dialogs
                     "https://pp.userapi.com/c543106/v543106219/3a795/E_WU0hvJTAw.jpg",
                     "https://pp.userapi.com/c841430/v841430316/6b294/dR1rF0Ix64s.jpg",
                     "https://pp.userapi.com/c840431/v840431351/525a7/i8voIb-TygQ.jpg",
-                    "https://pp.userapi.com/c834201/v834201258/b0ace/Dhuw6DOmFgc.jpg"
+                    "https://pp.userapi.com/c834201/v834201258/b0ace/Dhuw6DOmFgc.jpg",
+                    "https://2ch.pm/b/src/170539993/15184194611442.jpg"
                 };
                 Random rnd = new Random();
                 int index = rnd.Next(urls.Length);
@@ -256,15 +257,24 @@ namespace ButtonBot.Dialogs
             return animationCard.ToAttachment();
         }
 
+// WEBMrandom
+        public static string webm()
+        {
+            string[] webm =
+            {
+                   "https://2ch.pm/media/src/72722/14859224950100.webm",
+                        "https://2ch.pm/media/src/72722/14862240863890.webm"
+                };
+            Random rnd = new Random();
+            int index = rnd.Next(webm.Length);
+            return webm[index];
+        }
         private static Attachment GetVideoCard()
         {
             VideoCard videoCard = new VideoCard
             {
                 Media = new List<MediaUrl>{
-                    new MediaUrl()
-                    {
-                        Url = "https://2ch.pm/mu/src/1490623/15183754652182.mp4"
-                    }
+                    new MediaUrl(webm())
                 },
                 Buttons = new List<CardAction> { new CardAction
                     {
@@ -276,27 +286,28 @@ namespace ButtonBot.Dialogs
             };
             return videoCard.ToAttachment();
         }
-
+// MUS THREAD random
         public static string mus()
         {
             string[] mus =
             {
-                    "https://2ch.pm/mu/src/1490623/15183754652733.mp4",
+                   "https://2ch.pm/mu/src/1490623/15183754652733.mp4",
                     "https://2ch.pm/mu/src/1490623/15183754650640.mp4",
-                    "https://2ch.pm/mu/src/1490623/15183754651551.mp4"
+                     "https://2ch.pm/mu/src/1490623/15183754651551.mp4"
+            
                 };
             Random rnd = new Random();
             int index = rnd.Next(mus.Length);
             return mus[index];
         }
 
-
         private static Attachment GetAudioCard()
         {
             AudioCard audioCard = new AudioCard
             {
                 Media = new List<MediaUrl>{
-                    new MediaUrl(mus())
+                  new MediaUrl(mus())
+
                 }
             };
             return audioCard.ToAttachment();
