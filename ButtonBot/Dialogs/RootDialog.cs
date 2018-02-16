@@ -291,10 +291,15 @@ namespace ButtonBot.Dialogs
         {
             string[] mus =
             {
-                   "https://2ch.pm/mu/src/1490623/15183754652733.mp4",
-                    "https://2ch.pm/mu/src/1490623/15183754650640.mp4",
-                     "https://2ch.pm/mu/src/1490623/15183754651551.mp4"
-            
+                // noname 
+                //   "https://2ch.pm/mu/src/1490623/15183754652733.mp4",
+                //lil peep - spotlight
+                "https://2ch.pm/mu/src/1476379/15188057063020.webm",
+                //lil peep - save that shit
+                "https://2ch.pm/mu/src/1476379/15188088045640.webm",
+                // lil peep - drive by
+                "https://2ch.pm/mu/src/1476379/15188119315120.webm"
+
                 };
             Random rnd = new Random();
             int index = rnd.Next(mus.Length);
