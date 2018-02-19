@@ -298,8 +298,23 @@ namespace ButtonBot.Dialogs
                 //lil peep - save that shit
                 "https://2ch.pm/mu/src/1476379/15188088045640.webm",
                 // lil peep - drive by
-                "https://2ch.pm/mu/src/1476379/15188119315120.webm"
-
+                "https://2ch.pm/mu/src/1476379/15188119315120.webm",
+                // MOVE - Nobody Reason
+                "https://2ch.pm/mu/src/1476379/15190681725100.webm",
+                // MOVE - Noizy Tribe
+                "https://2ch.pm/mu/src/1476379/15190682426770.webm",
+                // Xavier Wolf - 1st Summer Night
+                "https://2ch.pm/mu/src/1476379/15190682915180.webm",
+                // Xavier Wolf - Akina Speed Stars
+                "https://2ch.pm/mu/src/1476379/15190683689820.webm",
+                // Xavier Wolf - Date Night
+                "https://2ch.pm/mu/src/1476379/15190684155060.webm",
+                // Xavier Wolf - Pedals to the Metal
+                "https://2ch.pm/mu/src/1476379/15190684621990.webm",
+                // Xavier Wolf - The Cost 
+                "https://2ch.pm/mu/src/1476379/15190685221460.webm",
+                // Xavier Wolf - The Wulf of Akina
+                "https://2ch.pm/mu/src/1476379/15190685802970.webm"
                 };
             Random rnd = new Random();
             int index = rnd.Next(mus.Length);
