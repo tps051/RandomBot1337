@@ -13,6 +13,7 @@ namespace ButtonBot.Dialogs
  
     public class RootDialog : IDialog<object>
     {
+        private const string Weather = "Weather";
         private const string BredStories = "/b/Story";
         private const string HeroCard = "Hero card";
         private const string SigninCard = "Sign-in card";
@@ -37,6 +38,13 @@ namespace ButtonBot.Dialogs
             {
                 Buttons = new List<CardAction>
                 {
+                    new CardAction
+                    {
+                        Value = Weather,
+                        Text = Weather,
+                        Title = Weather,
+                        Type = ActionTypes.ImBack
+                    },
                     new CardAction
                     {
                         Value = BredStories,
@@ -106,6 +114,8 @@ namespace ButtonBot.Dialogs
 
             switch (select)
             {
+                case Weather:
+                    return GetWeather();
                 case BredStories:
                     return GetStory();
                 case PicrandomCard:
@@ -125,9 +135,19 @@ namespace ButtonBot.Dialogs
                     return GetHeroCard();
             }
         }
-        private static Attachment GetStory()
+        private static Attachment GetWeather()
         {
             HeroCard heroCard = new HeroCard
+            {
+                Title = "Weather Today (Moscow)",
+                Subtitle = "",
+                Text = Pasts()
+            };
+            return heroCard.ToAttachment();
+        }
+        private static Attachment GetStory()
+        {
+        HeroCard heroCard = new HeroCard
             {
                 Title = "Amazing stories",
                 Subtitle = "",
@@ -174,7 +194,8 @@ namespace ButtonBot.Dialogs
                     "https://pp.userapi.com/c543106/v543106219/3a795/E_WU0hvJTAw.jpg",
                     "https://pp.userapi.com/c841430/v841430316/6b294/dR1rF0Ix64s.jpg",
                     "https://pp.userapi.com/c840431/v840431351/525a7/i8voIb-TygQ.jpg",
-                    "https://pp.userapi.com/c834201/v834201258/b0ace/Dhuw6DOmFgc.jpg"
+                    "https://pp.userapi.com/c834201/v834201258/b0ace/Dhuw6DOmFgc.jpg",
+                    "https://2ch.pm/b/src/170539993/15184194611442.jpg"
                 };
                 Random rnd = new Random();
                 int index = rnd.Next(urls.Length);
@@ -256,15 +277,24 @@ namespace ButtonBot.Dialogs
             return animationCard.ToAttachment();
         }
 
+// WEBMrandom
+        public static string webm()
+        {
+            string[] webm =
+            {
+                   "https://2ch.pm/media/src/72722/14859224950100.webm",
+                        "https://2ch.pm/media/src/72722/14862240863890.webm"
+                };
+            Random rnd = new Random();
+            int index = rnd.Next(webm.Length);
+            return webm[index];
+        }
         private static Attachment GetVideoCard()
         {
             VideoCard videoCard = new VideoCard
             {
                 Media = new List<MediaUrl>{
-                    new MediaUrl()
-                    {
-                        Url = "https://2ch.pm/mu/src/1490623/15183754652182.mp4"
-                    }
+                    new MediaUrl(webm())
                 },
                 Buttons = new List<CardAction> { new CardAction
                     {
@@ -276,27 +306,48 @@ namespace ButtonBot.Dialogs
             };
             return videoCard.ToAttachment();
         }
-
+// MUS THREAD random
         public static string mus()
         {
             string[] mus =
             {
-                    "https://2ch.pm/mu/src/1490623/15183754652733.mp4",
-                    "https://2ch.pm/mu/src/1490623/15183754650640.mp4",
-                    "https://2ch.pm/mu/src/1490623/15183754651551.mp4"
+                // noname 
+                //   "https://2ch.pm/mu/src/1490623/15183754652733.mp4",
+                //lil peep - spotlight
+                "https://2ch.pm/mu/src/1476379/15188057063020.webm",
+                //lil peep - save that shit
+                "https://2ch.pm/mu/src/1476379/15188088045640.webm",
+                // lil peep - drive by
+                "https://2ch.pm/mu/src/1476379/15188119315120.webm",
+                // MOVE - Nobody Reason
+                "https://2ch.pm/mu/src/1476379/15190681725100.webm",
+                // MOVE - Noizy Tribe
+                "https://2ch.pm/mu/src/1476379/15190682426770.webm",
+                // Xavier Wolf - 1st Summer Night
+                "https://2ch.pm/mu/src/1476379/15190682915180.webm",
+                // Xavier Wolf - Akina Speed Stars
+                "https://2ch.pm/mu/src/1476379/15190683689820.webm",
+                // Xavier Wolf - Date Night
+                "https://2ch.pm/mu/src/1476379/15190684155060.webm",
+                // Xavier Wolf - Pedals to the Metal
+                "https://2ch.pm/mu/src/1476379/15190684621990.webm",
+                // Xavier Wolf - The Cost 
+                "https://2ch.pm/mu/src/1476379/15190685221460.webm",
+                // Xavier Wolf - The Wulf of Akina
+                "https://2ch.pm/mu/src/1476379/15190685802970.webm"
                 };
             Random rnd = new Random();
             int index = rnd.Next(mus.Length);
             return mus[index];
         }
 
-
         private static Attachment GetAudioCard()
         {
             AudioCard audioCard = new AudioCard
             {
                 Media = new List<MediaUrl>{
-                    new MediaUrl(mus())
+                  new MediaUrl(mus())
+
                 }
             };
             return audioCard.ToAttachment();
