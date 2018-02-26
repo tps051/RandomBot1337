@@ -7,6 +7,7 @@ using Microsoft.Bot.Connector;
 using Newtonsoft.Json;
 using System.IO;
 
+
 namespace ButtonBot.Dialogs
 {
     [Serializable]
@@ -20,16 +21,26 @@ namespace ButtonBot.Dialogs
         private const string VideoCard = "Video card";
         private const string AudioCard = "Audio card";
         private const string PicrandomCard = "Pic random";
-        static string path = Environment.CurrentDirectory + "\\texts.json";
-        StreamReader file = new StreamReader(path);
+        static string path =  @"C:\\Users\\Comp4\\Documents\\GitHub\\RandomBot1337\\ButtonBot\\Dialogs\\json.json";
+        static Story pasts;
+        static List<Story> stories;
         
         private IEnumerable<string> options = new List<string> {BredStories, HeroCard, PicrandomCard, SigninCard, AnimationCard, VideoCard, AudioCard };
         public async Task StartAsync(IDialogContext context)
         {
-            
+            string str = File.ReadAllText(path);
+            stories = new List<Story>();
+            stories = JsonConvert.DeserializeObject<List<Story>>(str);
+            Pasts();
             context.Wait(MessageReceivedAsync);
         }
-
+        public static void Pasts()
+        {
+           Random rnd = new Random();
+           int index = rnd.Next(stories.Count);
+           pasts = stories[index];
+            
+        }
 
         private async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IActivity> result)
         {
@@ -127,11 +138,21 @@ namespace ButtonBot.Dialogs
         }
         private static Attachment GetStory()
         {
+            Pasts();
             HeroCard heroCard = new HeroCard
             {
-                Title = "Amazing stories",
+                Title = pasts.Header,
                 Subtitle = "",
-                Text = Pasts()
+                Text = pasts.Text,
+                 Buttons = new List<CardAction>
+                {
+                    new CardAction{
+                        Value = BredStories,
+                        Text = BredStories,
+                        Title = BredStories,
+                        Type = ActionTypes.ImBack
+                    }
+                }
             };
             return heroCard.ToAttachment();
         }
@@ -290,22 +311,13 @@ namespace ButtonBot.Dialogs
             };
             return audioCard.ToAttachment();
         }
-        public static string Pasts()
-        {
-            string[] stories =
-            {
-                "text1",
-                "text2",
-                "text3",
-                "text4",
-                "text5"
-            };
-            Random rnd = new Random();
-            int index = rnd.Next(stories.Length);
-            return stories[index];
-        }
+        
     }
-
+    class Story
+    {
+        public string Header { get; set; }
+        public string Text { get; set; }
+    }
 
 
 }
