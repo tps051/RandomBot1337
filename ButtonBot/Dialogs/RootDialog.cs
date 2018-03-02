@@ -135,23 +135,23 @@ namespace ButtonBot.Dialogs
                     return GetHeroCard();
             }
         }
-        private static Attachment GetWeather()
-        {
-            HeroCard heroCard = new HeroCard
-            {
-                Title = "Weather Today (Moscow)",
-                Subtitle = "",
-                Text = Pasts()
-            };
-            return heroCard.ToAttachment();
-        }
+        //private static Attachment GetWeather()
+        //{
+        //    HeroCard heroCard = new HeroCard
+        //    {
+        //        Title = "Weather Today (Moscow)",
+        //        Subtitle = "",
+        //       // Text = Pasts()
+        //    };
+        //    return heroCard.ToAttachment();
+        //}
         private static Attachment GetStory()
         {
         HeroCard heroCard = new HeroCard
             {
                 Title = "Amazing stories",
                 Subtitle = "",
-                Text = Pasts()
+                Text = "",
             };
             return heroCard.ToAttachment();
         }
@@ -276,8 +276,20 @@ namespace ButtonBot.Dialogs
             };
             return animationCard.ToAttachment();
         }
+ //Weather
+        private static Attachment GetWeather()
+        {
+            HeroCard heroCard = new HeroCard
+            {
+                Title = "Weather Today (Moscow)",
+                Subtitle = "",
 
-// WEBMrandom
+
+            };
+            return heroCard.ToAttachment();
+        }
+
+ // WEBMrandom
         public static string webm()
         {
             string[] webm =
@@ -352,20 +364,7 @@ namespace ButtonBot.Dialogs
             };
             return audioCard.ToAttachment();
         }
-        public static string Pasts()
-        {
-            string[] stories =
-            {
-                "text1",
-                "text2",
-                "text3",
-                "text4",
-                "text5"
-            };
-            Random rnd = new Random();
-            int index = rnd.Next(stories.Length);
-            return stories[index];
-        }
+        
     }
 
 
